@@ -80,11 +80,21 @@ body * {
   left: 0;
   z-index: 1;
   transform: translateY(-10%);
+  /* NÃO COLOQUEI NO .LIGHT SWITCH BUTTON PORQUE ELE TA NA FUNÇÃO NORMAL DELE AGORA, E SE EU COLOCASSO NO .LIGHT A ANIMAÇÃO IRIA BUGAR*/
+  animation: slide-back 0.3s forwards;
 }
 
+/* para quando passarmos o mouse em cima*/
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+/* antes o código estava em 
+right: 0;
+left: initial;
+mas tive que mudar para a que está aqui em baixo para poder fazer a animação (FORWARDS MANTEM AS PROPRIEDADES DO SLIDE-IN PARA PODER DEIXAR A ANIMAÇÃO CONTINUANDO)*/
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.3s forwards;
 }
 
 #switch span {
@@ -163,7 +173,7 @@ footer {
   text-align: center;
   font-size: 14px;
 }
- 
+
 /* media queries */
 @media (min-width: 700px) {
   :root {
@@ -172,5 +182,26 @@ footer {
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* criar animções (depois de criar o nome, O LARANJA É O NOME DA ANIMçÃO!!! */
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+/*ESSA É DA ANIMAÇÃO NA HORA DA BOLINHA VOLTAR PRA ESQUERDA, FICAR ESCURO O SITE*/
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
